@@ -20,11 +20,12 @@ package
 	  * TODO: fler skepptyper : in progress
 	  * TODO: minska outnyttjat område : in progress
 	  * TODO: 4x2 ; 3x3 ; 2x4 ; 1x5 ; Antal x storlek : in progress
-	  * TODO:
+	  * TODO: bilder : Done
 	  */
 	 
 	public class Main extends Sprite 
 	{
+		
 		
 		
 		
@@ -67,7 +68,17 @@ package
 				case Keyboard.SPACE:
 					setGameBoard();
 				break;
+				case Keyboard.W:
+					for each (var line:Vector.<Tile> in battleField) 
+					{
+						for each (var newTile:Tile in line) 
+						{
+							newTile.bombIt();
+						}
+					}
+				break;
 			}
+			
 		}
 		
 		private function setGameBoard():void 
@@ -134,7 +145,6 @@ package
 										for (var m:int = 0; m < 2; m++) 
 										{
 											battleField[shipX + m][shipY].state = "hiddenShip";
-											battleField[shipX + m][shipY].bombIt();
 										}
 										settingShips = false;
 									}
@@ -144,7 +154,6 @@ package
 							else
 							{
 								settingShips = true;
-
 								while (settingShips) 
 								{
 										
@@ -156,7 +165,6 @@ package
 										for (var m:int = 0; m < 2; m++) 
 										{
 											battleField[shipX][shipY + m].state = "hiddenShip";
-											battleField[shipX][shipY + m].bombIt();
 										}
 										settingShips = false;
 									}
@@ -186,7 +194,6 @@ package
 										for (var m:int = 0; m < 3; m++) 
 										{
 											battleField[shipX + m][shipY].state = "hiddenShip";
-											battleField[shipX + m][shipY].bombIt();
 										}
 										settingShips = false;
 									}
@@ -196,7 +203,6 @@ package
 							else
 							{
 								settingShips = true;
-
 								while (settingShips) 
 								{
 										
@@ -208,7 +214,6 @@ package
 										for (var m:int = 0; m < 3; m++) 
 										{
 											battleField[shipX][shipY + m].state = "hiddenShip";
-											battleField[shipX][shipY + m].bombIt();
 										}
 										settingShips = false;
 									}
